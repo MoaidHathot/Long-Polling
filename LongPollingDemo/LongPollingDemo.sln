@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LongPolling", "LongPollingDemo\LongPolling.csproj", "{4A460214-E7D1-47A1-8494-74B04B405B1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LongPollingDemo.Shared", "LongPollingDemo.Shared\LongPollingDemo.Shared.csproj", "{2CA24E03-B561-462E-B7D8-5631DC6C72C6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LongPollingDemo.Client", "LongPollingDemo.Client\LongPollingDemo.Client.csproj", "{545A4A5C-AC0E-4F1E-A93A-7A3CADE566F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LongPollingDemo.Server.SelfHosting", "LongPollingDemo.Server.SelfHosting\LongPollingDemo.Server.SelfHosting.csproj", "{8D0355B7-5B78-44DA-902F-E18C9FA8686F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LongPollingDemo.Server", "LongPollingDemo.Server\LongPollingDemo.Server.csproj", "{2B166B36-64A3-4DB6-B396-314CBEDBA389}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LongPollingDemo.Client.Runner", "LongPollingDemo.Client.Runner\LongPollingDemo.Client.Runner.csproj", "{A5658F5F-E871-43A2-B5EC-527B31352785}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A460214-E7D1-47A1-8494-74B04B405B1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A460214-E7D1-47A1-8494-74B04B405B1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A460214-E7D1-47A1-8494-74B04B405B1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A460214-E7D1-47A1-8494-74B04B405B1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CA24E03-B561-462E-B7D8-5631DC6C72C6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CA24E03-B561-462E-B7D8-5631DC6C72C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CA24E03-B561-462E-B7D8-5631DC6C72C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CA24E03-B561-462E-B7D8-5631DC6C72C6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{545A4A5C-AC0E-4F1E-A93A-7A3CADE566F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{545A4A5C-AC0E-4F1E-A93A-7A3CADE566F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{545A4A5C-AC0E-4F1E-A93A-7A3CADE566F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{545A4A5C-AC0E-4F1E-A93A-7A3CADE566F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D0355B7-5B78-44DA-902F-E18C9FA8686F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D0355B7-5B78-44DA-902F-E18C9FA8686F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D0355B7-5B78-44DA-902F-E18C9FA8686F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D0355B7-5B78-44DA-902F-E18C9FA8686F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B166B36-64A3-4DB6-B396-314CBEDBA389}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B166B36-64A3-4DB6-B396-314CBEDBA389}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B166B36-64A3-4DB6-B396-314CBEDBA389}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B166B36-64A3-4DB6-B396-314CBEDBA389}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5658F5F-E871-43A2-B5EC-527B31352785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5658F5F-E871-43A2-B5EC-527B31352785}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5658F5F-E871-43A2-B5EC-527B31352785}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5658F5F-E871-43A2-B5EC-527B31352785}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

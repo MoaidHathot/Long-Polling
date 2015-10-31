@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="LongPolling.Server" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="EventsDueTime" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:10</Value>
+    </Setting>
+    <Setting Name="EventsInterval" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:01</Value>
+    </Setting>
+    <Setting Name="EventsPerInterval" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">60</Value>
+    </Setting>
+    <Setting Name="NotificationsTimeout" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:10</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

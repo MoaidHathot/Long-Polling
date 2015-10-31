@@ -1,0 +1,27 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="LongPollingDemo.Client.Runner" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="ClientsCount" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="ClientsReadingTimeout" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:02:00</Value>
+    </Setting>
+    <Setting Name="ClientsRuntime" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">02:00:00</Value>
+    </Setting>
+    <Setting Name="InstancesCount" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">1</Value>
+    </Setting>
+    <Setting Name="DelayBetweenInstances" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:01:00</Value>
+    </Setting>
+    <Setting Name="ClientFilePath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">LongPolling.Client.exe</Value>
+    </Setting>
+    <Setting Name="DelayBetweenClients" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">00:00:01</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
