@@ -19,7 +19,7 @@ namespace LongPolling.Shared
             {
                 timeWatch.Start();
 
-                Log.Instance.Info(">> [{0}](Info: '{1}')", name, info);
+                System.Console.WriteLine(">> [{0}](Info: '{1}')", name, info);
 
                 action();
 
@@ -27,14 +27,14 @@ namespace LongPolling.Shared
             }
             catch (Exception ex)
             {
-                Log.Instance.Warning("Exception in [{0}](Info: '{1}'). Exception: '{2}'", name, info, ex);
+                System.Console.WriteLine("Exception in [{0}](Info: '{1}'). Exception: '{2}'", name, info, ex);
             }
             finally
             {
                 timeWatch.Stop();
             }
 
-            Log.Instance.Info("<< [{0}](Info: '{1}'), Elapsed: '{2}'", name, info, timeWatch.Elapsed);
+            System.Console.WriteLine("<< [{0}](Info: '{1}'), Elapsed: '{2}'", name, info, timeWatch.Elapsed);
         }
 
         public static T Wrap<T>(Func<T> func, string info = "", [CallerMemberName] string name = "")
@@ -46,7 +46,7 @@ namespace LongPolling.Shared
             {
                 timeWatch.Start();
 
-                Log.Instance.Info(">> [{0}](Info: '{1}')", name, info);
+                System.Console.WriteLine(">> [{0}](Info: '{1}')", name, info);
 
                 result = func();
 
@@ -54,14 +54,14 @@ namespace LongPolling.Shared
             }
             catch (Exception ex)
             {
-                Log.Instance.Warning("Exception in [{0}](Info: '{1}'). Exception: '{2}'", name, info, ex);
+                System.Console.WriteLine("Exception in [{0}](Info: '{1}'). Exception: '{2}'", name, info, ex);
             }
             finally
             {
                 timeWatch.Stop();
             }
 
-            Log.Instance.Info("<< [{0}](info: '{1}'), Elapsed: '{2}', Result: '{3}'", name, info, timeWatch.Elapsed, null == result ? "null" :  result is IEnumerable ? ((IEnumerable)result).ToMultiLineString(false) : result.ToString());
+            System.Console.WriteLine("<< [{0}](info: '{1}'), Elapsed: '{2}', Result: '{3}'", name, info, timeWatch.Elapsed, null == result ? "null" :  result is IEnumerable ? ((IEnumerable)result).ToMultiLineString(false) : result.ToString());
 
             return result;
         }

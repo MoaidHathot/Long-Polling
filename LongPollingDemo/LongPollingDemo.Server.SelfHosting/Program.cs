@@ -40,7 +40,7 @@ namespace LongPolling.Server.SelfHosting
 
                 host.Open();
 
-                Log.Instance.Info("Service is ready...");
+                System.Console.WriteLine("Service is ready...");
 
                 Console.WriteLine("Press enter to stop service.");
                 Console.ReadLine();
@@ -75,11 +75,11 @@ namespace LongPolling.Server.SelfHosting
             var availableCompletion = -1;
             ThreadPool.GetAvailableThreads(out availableWorker, out availableCompletion);
 
-            Log.Instance.Debug("####################");
-            Log.Instance.Debug("MinWorker: '{0}', MinCompletion: '{1}'", minWorker, minCompletion);
-            Log.Instance.Debug("MaxWorker: '{0}', MaxCompletion: '{1}'", maxWorker, maxCompletion);
-            Log.Instance.Debug("AvailableWorker: '{0}', AvailableCompletion: '{1}'", availableWorker, availableCompletion);
-            Log.Instance.Debug("####################{0}", Environment.NewLine);
+            System.Console.WriteLine("####################");
+            System.Console.WriteLine("MinWorker: '{0}', MinCompletion: '{1}'", minWorker, minCompletion);
+            System.Console.WriteLine("MaxWorker: '{0}', MaxCompletion: '{1}'", maxWorker, maxCompletion);
+            System.Console.WriteLine("AvailableWorker: '{0}', AvailableCompletion: '{1}'", availableWorker, availableCompletion);
+            System.Console.WriteLine("####################{0}", Environment.NewLine);
         }
     }
 }

@@ -16,21 +16,21 @@ namespace LongPolling.Client.Runner
             {
                 var prefix = string.Format("{0}_{1}", hostname, instance);
 
-                Log.Instance.Info("Starting prefix '{0}' by path: '{1}'", prefix, Settings.Default.ClientFilePath);
+                System.Console.WriteLine("Starting prefix '{0}' by path: '{1}'", prefix, Settings.Default.ClientFilePath);
 
                 var settings = Settings.Default;
 
                 Process.Start(Settings.Default.ClientFilePath, string.Format("{0} {1} {2} {3} {4} {5} {6}", prefix, hostname, instance, settings.ClientsCount, settings.ClientsReadingTimeout,
                                                                                                                     settings.DelayBetweenClients, settings.ClientsRuntime));
 
-                Log.Instance.Info("prefix '{0}' was started.", prefix);
+                System.Console.WriteLine("prefix '{0}' was started.", prefix);
 
-                Log.Instance.Info("Delaying instance starting by '{0}'", Settings.Default.DelayBetweenInstances);
+                System.Console.WriteLine("Delaying instance starting by '{0}'", Settings.Default.DelayBetweenInstances);
 
                 Thread.Sleep(Settings.Default.DelayBetweenInstances);
             }
 
-            Log.Instance.Info("Finish starting instances");
+            System.Console.WriteLine("Finish starting instances");
         }
     }
 }

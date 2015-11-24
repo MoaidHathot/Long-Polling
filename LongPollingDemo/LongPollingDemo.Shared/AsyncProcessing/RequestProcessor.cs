@@ -19,7 +19,7 @@ namespace LongPolling.Shared
         {
             m_RequestorName = GetType().Name + (string.IsNullOrWhiteSpace(name) ? string.Empty : " - " + name);
 
-            Log.Instance.Debug("RequestProcessor was created.");
+            System.Console.WriteLine("RequestProcessor was created.");
         }
         #endregion
 
@@ -33,7 +33,7 @@ namespace LongPolling.Shared
         //    BeginInvoke(request);
         //    EndInvoke(request);
 
-        //    Log.Instance.Debug("SynchronousInvoke was completed. (Request: '{0}')", request);
+        //    System.Console.WriteLine("SynchronousInvoke was completed. (Request: '{0}')", request);
         //}
         /// <summary>
         /// Processes request in asynchronous manner.
@@ -57,7 +57,7 @@ namespace LongPolling.Shared
                 SmartThreadPool.QueueWorkItem(OnProcess, request);
             }
 
-            Log.Instance.Debug("'{0}': Request is queued for further processing. (Request: '{1}')", m_RequestorName, request);
+            System.Console.WriteLine("'{0}': Request is queued for further processing. (Request: '{1}')", m_RequestorName, request);
         }
         ///// <summary>
         ///// Waits for request started by BeginProcessRequest to be completed.
@@ -78,7 +78,7 @@ namespace LongPolling.Shared
         //    request.CompletedSynchronously = true;
 
         //    //SmartThreadPool.QueueWorkItem(OnProcess);
-        //    Log.Instance.Debug("EndInvoke cal was completed. (Request: '{0}')", request);
+        //    System.Console.WriteLine("EndInvoke cal was completed. (Request: '{0}')", request);
         //}
         #endregion
 
@@ -103,7 +103,7 @@ namespace LongPolling.Shared
         {
             if (null == request)
             {
-                Log.Instance.Warning("The request is null. The request will be ignored.");
+                System.Console.WriteLine("The request is null. The request will be ignored.");
                 return;
             }
 
@@ -114,7 +114,7 @@ namespace LongPolling.Shared
             }
             catch (Exception ex)
             {
-                Log.Instance.Error(ex, "Request processing failed. (Request: '{0}'). Exception: [{1}]", request, ex);
+                System.Console.WriteLine("Request processing failed. (Request: '{0}'). Exception: [{1}]", request, ex);
             }
             finally
             {
@@ -124,21 +124,21 @@ namespace LongPolling.Shared
 
         protected virtual void ProcessResult(Request request)
         {
-            Log.Instance.Debug("Handling the request result. Request: [{0}]", request);
+            System.Console.WriteLine("Handling the request result. Request: [{0}]", request);
 
             if (!request.IsCompleted)
             {
-                Log.Instance.Warning("A request that is expected to be completed, is not completed yet. Exception: [{0}]", request);
+                System.Console.WriteLine("A request that is expected to be completed, is not completed yet. Exception: [{0}]", request);
                 return;
             }
 
             if (!request.IsFailed)
             {
-                Log.Instance.Debug("A request was completed successfully. (Request: '{0}')", request);
+                System.Console.WriteLine("A request was completed successfully. (Request: '{0}')", request);
             }
             else
             {
-                Log.Instance.Warning("A request was failed. Will be handled. (Request: '{0}')", request);
+                System.Console.WriteLine("A request was failed. Will be handled. (Request: '{0}')", request);
 
                 HandleFailedRequest(request);
             }
@@ -146,7 +146,7 @@ namespace LongPolling.Shared
 
         protected virtual void HandleFailedRequest(Request request)
         {
-            Log.Instance.Debug("Will not attempt to handle the request: [{0}]", request);
+            System.Console.WriteLine("Will not attempt to handle the request: [{0}]", request);
         }
 
         //protected void FireEvent(EventHandler<RequestExecutionEventArgs> group, RequestExecutionEventArgs args)
@@ -163,13 +163,13 @@ namespace LongPolling.Shared
         {
             try
             {
-                Log.Instance.Debug("Executing the request: [{0}]", request);
+                System.Console.WriteLine("Executing the request: [{0}]", request);
 
                 request.Execute();
             }
             catch (Exception ex)
             {
-                Log.Instance.Error(ex, "Request executing failed. (Request: '{0}'). Exception: [{1}]", request, ex);
+                System.Console.WriteLine("Request executing failed. (Request: '{0}'). Exception: [{1}]", request, ex);
             }
         }
 

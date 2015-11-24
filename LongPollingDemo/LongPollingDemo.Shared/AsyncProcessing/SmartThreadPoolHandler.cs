@@ -32,11 +32,11 @@ namespace LongPolling.Shared
             try
             {
                 InitializeLocalPerformanceCounters();
-                Log.Instance.Info("SmartThreadPool Handler constructor created");
+                System.Console.WriteLine("SmartThreadPool Handler constructor created");
             }
             catch (Exception ex)
             {
-                Log.Instance.Error("SmartThreadPool Handler constructor failed", ex);
+                System.Console.WriteLine("SmartThreadPool Handler constructor failed", ex);
                 throw;
             }
         }
@@ -98,10 +98,10 @@ namespace LongPolling.Shared
 
             //Thread.CurrentThread.Name = "SmartThreadPool Statistics";
 
-            Log.Instance.Debug("########## Number Of Active Threads :{0} ", _getActiveThreads().ToString());
-            Log.Instance.Debug("########## Number Of In Use Threads :{0} ", _getInUseThreads().ToString());
-            Log.Instance.Debug("########## Work Item Queued : {0} ", _getQueuedWorkItems().ToString());
-            Log.Instance.Debug("########## Number Of Complete Items: {0} ", _getCompletedWorkItems().ToString());
+            System.Console.WriteLine("########## Number Of Active Threads :{0} ", _getActiveThreads().ToString());
+            System.Console.WriteLine("########## Number Of In Use Threads :{0} ", _getInUseThreads().ToString());
+            System.Console.WriteLine("########## Work Item Queued : {0} ", _getQueuedWorkItems().ToString());
+            System.Console.WriteLine("########## Number Of Complete Items: {0} ", _getCompletedWorkItems().ToString());
         }
         #endregion
 
@@ -132,7 +132,7 @@ namespace LongPolling.Shared
 
                 Dispose(true);
             }
-            Log.Instance.Debug("SmartThreadPool was Disposed.");
+            System.Console.WriteLine("SmartThreadPool was Disposed.");
         }
 
         #endregion

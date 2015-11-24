@@ -15,12 +15,12 @@ namespace LongPolling.Client
     {
         public static void Main(string[] args)
         {
-            Log.Instance.Info("Starting Client with args: '{0}'", args.ToSingleLineStrin());
+            System.Console.WriteLine("Starting Client with args: '{0}'", args.ToSingleLineStrin());
 
             var clientArgs = new ClientArgs(args);
 
-            Log.Instance.Info("Starting Client with ClientArgs: '{0}'", clientArgs);
-            //Log.Instance.Info("Starting ClientPrefix: '{0}', ClientsCount: '{1}', ClientReadingTimeout: '{2}', DelayBetweenClients: '{3}', ClientsRunTime: '{4}'", clientArgs.ClientsPrefix, clientArgs.ClientsCount, clientArgs.ClientReadingTimeout, clientArgs.DelayBetweenClients, clientArgs.ClientsRuntime);
+            System.Console.WriteLine("Starting Client with ClientArgs: '{0}'", clientArgs);
+            //System.Console.WriteLine("Starting ClientPrefix: '{0}', ClientsCount: '{1}', ClientReadingTimeout: '{2}', DelayBetweenClients: '{3}', ClientsRunTime: '{4}'", clientArgs.ClientsPrefix, clientArgs.ClientsCount, clientArgs.ClientReadingTimeout, clientArgs.DelayBetweenClients, clientArgs.ClientsRuntime);
 
             var clients = new List<LongPollingClient>(clientArgs.ClientsCount);
 
@@ -39,12 +39,12 @@ namespace LongPolling.Client
 
                 client.Start();
 
-                Log.Instance.Info("Client with User: '{0}' is started", user);
+                System.Console.WriteLine("Client with User: '{0}' is started", user);
 
                 Thread.Sleep(clientArgs.DelayBetweenClients);
             }
 
-            Log.Instance.Info("ClientPrefix: '{0}', '{1}' clients were created and started", clientArgs.ClientsPrefix, clientArgs.ClientsCount);
+            System.Console.WriteLine("ClientPrefix: '{0}', '{1}' clients were created and started", clientArgs.ClientsPrefix, clientArgs.ClientsCount);
 
             var now = DateTime.Now;
 
@@ -52,15 +52,15 @@ namespace LongPolling.Client
 
             var runtime = clientArgs.ClientsRuntime + epsilon;
 
-            Log.Instance.Info("ClientPrefix: '{0}' is running for '{1}', Expected stop: '{2}', Now: '{3}', epsilon: '{4}', runtime with epsilon: '{5}'", clientArgs.ClientsPrefix, clientArgs.ClientsRuntime, now + clientArgs.ClientsRuntime, now, epsilon, runtime);
+            System.Console.WriteLine("ClientPrefix: '{0}' is running for '{1}', Expected stop: '{2}', Now: '{3}', epsilon: '{4}', runtime with epsilon: '{5}'", clientArgs.ClientsPrefix, clientArgs.ClientsRuntime, now + clientArgs.ClientsRuntime, now, epsilon, runtime);
 
             if (Task.WaitAll(clients.Select(c => c.Task).ToArray(), runtime))
             {
-                Log.Instance.Info("ClientPrefix: '{0}' finished waiting successfully for all '{1}' clients.", clientArgs.ClientsPrefix, clientArgs.ClientsCount);
+                System.Console.WriteLine("ClientPrefix: '{0}' finished waiting successfully for all '{1}' clients.", clientArgs.ClientsPrefix, clientArgs.ClientsCount);
             }
             else
             {
-                Log.Instance.Info("ClientsPrefix: '{0}' did not finish waiting for all '{1}' clients.", clientArgs.ClientsCount);
+                System.Console.WriteLine("ClientsPrefix: '{0}' did not finish waiting for all '{1}' clients.", clientArgs.ClientsCount);
             }
 
             Console.WriteLine("Press enter to quit.");
@@ -99,7 +99,7 @@ namespace LongPolling.Client
             {
                 if (index >= args.Length)
                 {
-                    Log.Instance.Warning("'Arguments missing the '{0}' argument. Will use default: '{1}'", index, defaultValue);
+                    System.Console.WriteLine("'Arguments missing the '{0}' argument. Will use default: '{1}'", index, defaultValue);
                     return defaultValue;
                 }
 
@@ -111,7 +111,7 @@ namespace LongPolling.Client
                 }
                 catch //(Exception ex)
                 {
-                    Log.Instance.Warning("Failed to parse '{0}'. Will return default: '{1}'", raw, defaultValue);
+                    System.Console.WriteLine("Failed to parse '{0}'. Will return default: '{1}'", raw, defaultValue);
 
                     return defaultValue;
                 }

@@ -62,11 +62,11 @@ namespace LongPolling.Server
                 notifyUsers.ForEach(u => { _users.Remove(u); _users[u] = u; });
             }
 
-            Log.Instance.Info("Dispatching '{0}' notifications", notifyUsers.Count);
+            System.Console.WriteLine("Dispatching '{0}' notifications", notifyUsers.Count);
 
             DispatchNotifications(notifyUsers);
 
-            Log.Instance.Debug("'{0}' notifications were dispatched...", notifyUsers.Count);
+            System.Console.WriteLine("'{0}' notifications were dispatched...", notifyUsers.Count);
         }
 
         protected abstract void DispatchNotifications(List<User> users);

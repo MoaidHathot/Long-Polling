@@ -38,7 +38,7 @@ namespace LongPolling.Client
             {
                 _service.Register(_user);
 
-                Log.Instance.Info("User: '{0}' is registered successfully.", _user);
+                System.Console.WriteLine("User: '{0}' is registered successfully.", _user);
 
                 while (!_cancellationToken.IsCancellationRequested)
                 {
@@ -48,7 +48,7 @@ namespace LongPolling.Client
 
                     var notificationsCount = null == notifications ? 0 : notifications.Count();
 
-                    Log.Instance.Debug("User: '{0}' is processing '{1}' notifications.", _user, notificationsCount);
+                    System.Console.WriteLine("User: '{0}' is processing '{1}' notifications.", _user, notificationsCount);
 
                     ProcessNotifications(notifications);
 
@@ -57,7 +57,7 @@ namespace LongPolling.Client
 
             }, null, _cancellationToken.Token, TaskCreationOptions.LongRunning, TaskScheduler.Current);
 
-            _task.ContinueWith((t) => Log.Instance.Warning("User: '{0}' has a faulted task. Exception: '{1}'", _user, t.Exception.Flatten()), TaskContinuationOptions.OnlyOnFaulted);
+            _task.ContinueWith((t) => System.Console.WriteLine("User: '{0}' has a faulted task. Exception: '{1}'", _user, t.Exception.Flatten()), TaskContinuationOptions.OnlyOnFaulted);
         }
 
         protected virtual void ProcessNotifications(IEnumerable<Notification> notifications)
@@ -73,7 +73,7 @@ namespace LongPolling.Client
                     builder.AppendLine(string.Format("User: '{0}', notification: '{1}'", _user, notification));
                 }
 
-                Log.Instance.Debug(builder.ToString());
+                System.Console.WriteLine(builder.ToString());
             }
         }
 
@@ -90,7 +90,7 @@ namespace LongPolling.Client
                     builder.AppendLine(string.Format("User: '{0}', delta: '{1}', now: '{2}', receivedUTC: '{3}', notificationUTC: '{4}'", _user, receivedtime - notification.TimeStamp, receivedtime, notification.TimeStamp, notification));
                 }
 
-                Log.Instance.Debug(builder.ToString());
+                System.Console.WriteLine(builder.ToString());
             }
         }
 
@@ -117,7 +117,7 @@ namespace LongPolling.Client
             }
             catch (Exception ex)
             {
-                Log.Instance.Info("User: '{0}' had exception while stopping. Exception: '{1}'", _user, ex);
+                System.Console.WriteLine("User: '{0}' had exception while stopping. Exception: '{1}'", _user, ex);
             }
         }
 
@@ -143,22 +143,22 @@ namespace LongPolling.Client
 
                         if (_task.Wait(_timeout))
                         {
-                            Log.Instance.Debug("User: '{0}' finished waiting '{1}' successfully for the task to dispose.", _user, _timeout);
+                            System.Console.WriteLine("User: '{0}' finished waiting '{1}' successfully for the task to dispose.", _user, _timeout);
                         }
                         else
                         {
-                            Log.Instance.Debug("User: '{0}' failed to wait '{1}' for the task to dispose.", _user, _timeout);
+                            System.Console.WriteLine("User: '{0}' failed to wait '{1}' for the task to dispose.", _user, _timeout);
                         }
 
                         _task.Dispose();
                     }
                     catch (AggregateException ex)
                     {
-                        Log.Instance.Warning("User: '{0}' received an exception during task disposing. Exception: '{1}'", _user, ex.Flatten());
+                        System.Console.WriteLine("User: '{0}' received an exception during task disposing. Exception: '{1}'", _user, ex.Flatten());
                     }
                     catch (Exception ex)
                     {
-                        Log.Instance.Warning("User: '{0}' received an exception during task disposing. Exception: '{1}'", _user, ex);
+                        System.Console.WriteLine("User: '{0}' received an exception during task disposing. Exception: '{1}'", _user, ex);
                     }
 
                     _task = null;

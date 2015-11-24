@@ -35,7 +35,7 @@ namespace LongPolling.Shared
         #region Public Methods
         public virtual Request GetCancelRequest(bool onDemand = false)
         {
-            Log.Instance.Debug("Receiving Cancel request. (Cancel Request Type: '{0}')", m_CancelRequest.GetType().Name);
+            System.Console.WriteLine("Receiving Cancel request. (Cancel Request Type: '{0}')", m_CancelRequest.GetType().Name);
             return m_CancelRequest;
         }
 
@@ -43,7 +43,7 @@ namespace LongPolling.Shared
         {
             InProgress = true;
 
-            Log.Instance.Debug("Going to call Request.OnExecute (IsCompleted: '{0}', IsFailed: '{1}')", IsCompleted, IsFailed);
+            System.Console.WriteLine("Going to call Request.OnExecute (IsCompleted: '{0}', IsFailed: '{1}')", IsCompleted, IsFailed);
             lock (m_SyncRoot)
             {
                 try
@@ -96,11 +96,11 @@ namespace LongPolling.Shared
                 {
                     OnRetryAttemptsExhausted();
 
-                    Log.Instance.Debug("Finished handling retry attempt exhaustion. Request: [{0}]", this.ToString());
+                    System.Console.WriteLine("Finished handling retry attempt exhaustion. Request: [{0}]", this.ToString());
                 }
                 catch (Exception ex)
                 {
-                    Log.Instance.Warning("Exception while handling retry attempt exhaustion. Request: [{0}]. Exception: [{1}]", this.ToString(), ex);
+                    System.Console.WriteLine("Exception while handling retry attempt exhaustion. Request: [{0}]. Exception: [{1}]", this.ToString(), ex);
                 }
             }
         }
@@ -127,7 +127,7 @@ namespace LongPolling.Shared
                     m_CompletionEvent.Close();
                     m_CompletionEvent = null;
                 }
-                Log.Instance.Debug("Request was disposed. (Request Type: '{0}')", GetType().Name);
+                System.Console.WriteLine("Request was disposed. (Request Type: '{0}')", GetType().Name);
                 m_Disposed = true;
             }
         }
@@ -214,7 +214,7 @@ namespace LongPolling.Shared
                 m_IsCompleted = false;
                 m_IsFailed = false;
             }
-            Log.Instance.Debug("Request was Reset. (Request Type: '{0}')", GetType().Name);
+            System.Console.WriteLine("Request was Reset. (Request Type: '{0}')", GetType().Name);
         }
         public override string ToString()
         {
@@ -225,7 +225,7 @@ namespace LongPolling.Shared
         #region Protected Methods
         protected void OnRequestCanceled()
         {
-            Log.Instance.Debug("OnRequestCanceled. (Request Type: '{0}')", GetType().Name);
+            System.Console.WriteLine("OnRequestCanceled. (Request Type: '{0}')", GetType().Name);
             m_CancelRequest.Dispose();
             Dispose();
         }

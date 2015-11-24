@@ -18,8 +18,8 @@ namespace LongPolling.Shared
             var max = 6000;
             var min = 1000;
 
-            Log.Instance.Debug("Max LongPooling threads: '{0}'", max);
-            Log.Instance.Debug("Min LongPooling threads: '{0}'", min);
+            System.Console.WriteLine("Max LongPooling threads: '{0}'", max);
+            System.Console.WriteLine("Min LongPooling threads: '{0}'", min);
 
             _threadPool.Start(max, min);
 
